@@ -1,6 +1,4 @@
-#foldTest <- "E:/UCI HAR Dataset/test"
-#foldTrain <- "E:/UCI HAR Dataset/train"
-#iSignals <- "Inertial Signals"
+# Dataset´s folder
 fold <- "E:/UCI HAR Dataset"
 
 #Get the label of features
@@ -28,11 +26,13 @@ subfeatures <- labelOfFeatures[which(grepl("mean[^F]", labelOfFeatures) |
                                        grepl("std", labelOfFeatures))]
 xSubfeatures <- x[subfeatures]
 
+#Get the subject
 var <- "subject"
 subjectTrain  <- read.table(paste(fold, "/train/", var, "_train.txt", sep = ""))
 subjectTest <- read.table(paste(fold, "/test/", var, "_test.txt", sep = ""))
 subject <- rbind(subjectTrain, subjectTest)
 
+#Get the action
 var <- "y"
 yTrain <- read.table(paste(fold, "/train/", var, "_train.txt", sep = ""))
 yTest <- read.table(paste(fold, "/test/", var, "_test.txt", sep = ""))
@@ -43,14 +43,16 @@ y <- unlist(y)
 activity_labels <- read.table(paste(fold, "/activity_labels.txt", sep = ""))
 activity <- activity_labels[y,]$V2
 
+
+#Create the dataset
 dataset <- cbind(subject, y, activity, xSubfeatures)
 colnames(dataset)[1] <- "subject"
 
+#Save the dataset
 write.csv(paste(fold, "/dataset_MEAN-STD.CSV", sep = ""))
 
 #From the data set in step 4, creates a second, independent tidy data set with the 
 #average of each variable for each activity and each subject
-
 for(i in 1:nrow(activity_labels)){
   for(j in 1:30){ # 30 = number of participants
     
@@ -74,5 +76,8 @@ for(i in 1:nrow(activity_labels)){
     }
   }
 }
+#Get the attributes
 colnames(newDataset) <- names(dataset)
+
+#Save the new dataset
 write.csv(paste(fold, "/NEW_dataset_MEAN-STD.CSV", sep = ""))
