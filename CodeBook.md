@@ -40,4 +40,25 @@ Additional vectors obtained by averaging the signals in a signal window sample. 
     <li>tBodyGyroMean</li>
     <li>tBodyGyroJerkMean</li>
     </ol>
-
+The step by step to carry out the necessary actions in this project were:
+<ol>
+<li>Get the label of features</li>
+<li>Get the data of features</li>
+<li>Merges the training and the test sets to create one data set</li>
+<li>Extracts only the measurements on the mean and standard deviation for each measurement</li>
+<li>Get the subject</li>
+<li>Get the action</li>
+<li>Get the label of activity</li>
+<li>Create the dataset</li>
+<li>Save the dataset</li>
+</ol>  
+From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+<ol>
+<li>Subset the dataset</li>
+<li>Create each row of new dataset</li>
+<li>Add subject, activity id and label</li>
+<li>Add average of each variable</li>
+<li>Create the dataset</li>
+<li>Get the attributes</li>
+<li>Save the new dataset</li>
+</ol>
