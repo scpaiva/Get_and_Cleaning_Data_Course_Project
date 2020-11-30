@@ -49,7 +49,8 @@ dataset <- cbind(subject, y, activity, xSubfeatures)
 colnames(dataset)[1] <- "subject"
 
 #Save the dataset
-write.csv(paste(fold, "/dataset_MEAN-STD.CSV", sep = ""))
+write.csv(dataset, paste(fold, "/dataset_MEAN-STD.CSV", sep = ""))
+write.table(dataset, paste(fold, "/dataset_MEAN-STD.txt", sep = ""), row.names = FALSE)
 
 #From the data set in step 4, creates a second, independent tidy data set with the 
 #average of each variable for each activity and each subject
@@ -80,4 +81,5 @@ for(i in 1:nrow(activity_labels)){
 colnames(newDataset) <- names(dataset)
 
 #Save the new dataset
-write.csv(paste(fold, "/NEW_dataset_MEAN-STD.CSV", sep = ""))
+write.csv(newDataset, paste(fold, "/NEW_dataset_MEAN-STD.CSV", sep = ""))
+write.table(newDataset, paste(fold, "/NEW_dataset_MEAN-STD.txt", sep = ""), row.names = FALSE)
