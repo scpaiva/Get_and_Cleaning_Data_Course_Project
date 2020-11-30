@@ -1,3 +1,4 @@
+
 # Dataset´s folder
 fold <- "E:/UCI HAR Dataset"
 
